@@ -30,11 +30,10 @@ def index(request):
 
     script, div = components(fig)
 
-    
     context = {
         'script': script,
         'div': div,
-        'year': range(min_year, max_year + 1)
+        'years': range(min_year, max_year + 1)
     }
 
     return render(request, 'index.html', context=context)
