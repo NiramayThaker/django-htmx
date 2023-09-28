@@ -4,7 +4,7 @@
 
     <p class="lead">GDP by country</p>
 
-    <div class="row">
+    <div id="barchart" class="row">
     
         <div class="col-10">
             {% include 'partials/gdp-bar.html' %}
@@ -12,10 +12,17 @@
     
         <div class="col-2">
             <form>
-                <select id="select-year" class="custom-select" name="year" autocomplete="off">
-                    {% for year in years %}
-                        <option value="{{year}}">{{year}}</option>
-                    {% endfor %}
+                <select id="select-year" 
+                    class="custom-select" 
+                    name="year" 
+                    autocomplete="off"
+                    hx-get="{% url  'index' %}"
+                    hx-target="#barchart">
+
+                {% for year in years %}
+                    <option value="{{year}}">{{year}}</option>
+                {% endfor %}
+                
                 </select>
             </form>
         </div>
