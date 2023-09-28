@@ -35,4 +35,7 @@ def index(request):
 		'years': range(min_year, max_year + 1)
 	}
 
+	if request.htmx:
+		return render(request, 'partials/gdp-bar.html', context)
+
 	return render(request, 'index.html', context=context)
