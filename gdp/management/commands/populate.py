@@ -15,15 +15,15 @@ class Command(BaseCommand):
 			with open(datafile, 'r') as f:
 				data = json.load(f)
 
-			data = itertools.dropwhile(lambda x: x['Country_name'] != 'Afghanistan', data)
+			data = itertools.dropwhile(lambda x: x['Country Name'] != 'Afghanistan', data)
 
 		gdps = []
 		for d in data:
 			gdps.append(GDP(
-				country=d['Country_Name'],
-				country_cede=d['Country_Code'],
-				year=d['year'],
-				gdp=d['values']
+				country=d['Country Name'],
+				country_code=d['Country Code'],
+				year=d['Year'],
+				gdp=d['Value']
 			))
 
 		GDP.objects.bulk_create(gdps)
