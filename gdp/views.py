@@ -22,6 +22,11 @@ def index(request):
     fig = figure(x_range=country_names, height=500, title=f"Top {count} GDPs ({year})")
     fig.vbar(source=cds, x='country_names', y='country_gdps', width=0.8)
 
-    
+    script, div = components(fig)
 
-    return render(request, 'index.html')
+    context = {
+        'script': script,
+        'div': div,
+    }
+
+    return render(request, 'index.html', context=context)
